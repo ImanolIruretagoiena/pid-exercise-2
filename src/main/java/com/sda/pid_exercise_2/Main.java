@@ -6,8 +6,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Main class for project.
+ * @author ImanolIruretagoiena
+ * @version 2020.04.29
+ */
 public class Main {
 
+	/**
+	 * Runs the application.
+	 * @param args Command-line arguments.
+	 */
 	public static void main(String[] args) {
 
 		Members members = new Members();
