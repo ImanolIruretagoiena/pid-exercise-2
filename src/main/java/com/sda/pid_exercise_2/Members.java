@@ -15,33 +15,65 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+/**
+ * Class for organizing member lists.
+ * @author ImanolIruretagoiena
+ * @version 2020.04.29
+ */
 public class Members {
 
+	// List for storing members.
 	private List<Member> memberList;
+	// Scanner for user input.
 	private Scanner keyboard;
+	// List for storing members who attended.
 	private List<Member> attendanceList;
 
+	/**
+	 * Constructor for member organizer.
+	 */
 	public Members() {
 		keyboard = new Scanner(System.in);
 		memberList = new ArrayList<>();
 		attendanceList = new ArrayList<>();
 	}
 	
+	/**
+	 * Getter method for member list.
+	 * @return Member list.
+	 */
 	public List<Member> getMemberList() {
 		return memberList;
 	}
 
+	/**
+	 * Setter method for member list.
+	 * @param newMemberList New member list.
+	 */
 	public void setMemberList(List<Member> newMemberList) {
 		this.memberList = newMemberList;
 	}
+	
+	/**
+	 * Getter method for attendance list.
+	 * @return List of members who attended.
+	 */
 	public List<Member> getAttendanceList() {
 		return attendanceList;
 	}
 
+	/**
+	 * Setter method for attendance list.
+	 * @param newAttendanceList New attendance list.
+	 */
 	public void setAttendanceList(List<Member> newAttendanceList) {
 		this.attendanceList = newAttendanceList;
 	}
 	
+	/**
+	 * Method to load member information from a member list in JSON format.
+	 * @param listReader Listreader object to read the JSON file.
+	 */
 	public void loadMemberData(FileReader listReader) {
 		List<Member> newMemberList = new ArrayList<>();
 		JSONParser parser = new JSONParser();
@@ -67,6 +99,10 @@ public class Members {
 		setMemberList(newMemberList);
 	}
 	
+	/**
+	 * Method to check whether there are repeated IDs in the loaded member list.
+	 * @param list Loaded member list.
+	 */
 	public void checkRepeatedID(List<Member> list) {
 		boolean repeated = false;
 		for(int i = 0; i < list.size(); i++) {
@@ -83,6 +119,10 @@ public class Members {
 		}
 	}
 	
+	/**
+	 * Method to set the attendance for members in the member list. Changes are saved into the
+	 * attendance list.
+	 */
 	public void checkAttendance() {
 		List<Member> newAttendanceList = new ArrayList<>();
 		System.out.println("Enter the names of people who attended (i.e. David Yu, Ric Glassey): ");
@@ -97,6 +137,10 @@ public class Members {
 		System.out.println("\n" + "List of members who attended: " + "\n");
 	}
 
+	/**
+	 * Method to save the attendance list into a JSON file.
+	 * @param listWriter Writer object to write into a file.
+	 */
 	@SuppressWarnings("unchecked")
 	public void saveAttendanceData(FileWriter listWriter) {
 		JSONObject object = new JSONObject();
@@ -118,6 +162,10 @@ public class Members {
 		}
 	}
 	
+	/**
+	 * Method to save the member list into a JSON file.
+	 * @param listWriter Writer object to write into a file.
+	 */
 	@SuppressWarnings("unchecked")
 	public void saveMemberData(FileWriter listWriter) {
 		JSONObject object = new JSONObject();
@@ -139,6 +187,10 @@ public class Members {
 		}
 	}
 	
+	/**
+	 * Method to load attendance information from a JSON file.
+	 * @param listReader Reader object to read from a file.
+	 */
 	public void loadAttendanceData(FileReader listReader) {
 		List<Member> newAttendanceList = new ArrayList<>();
 		JSONParser parser = new JSONParser();
@@ -165,7 +217,10 @@ public class Members {
 		setAttendanceList(newAttendanceList);
 	}
 	
-	
+	/**
+	 * Method to print the member data into the console.
+	 * @param list List with member data.
+	 */
 	public void printMemberData(List<Member> list) {
 		System.out.println("List: ");
 		for(Member member : list) {
@@ -173,12 +228,18 @@ public class Members {
 		}
 	}
 	
+	/**
+	 * Method to create a new member list.
+	 */
 	public void createNewMemberList() {
 		List<Member> newMemberList = new ArrayList<>();
 		setMemberList(newMemberList);
 		System.out.println("New empty member list created!");
 	}
 	
+	/**
+	 * Method to add a member to a member list. Repeated IDs not allowed.
+	 */
 	public void addMember() {
 		System.out.println("Enter new member details: " + "\n" + "Name: ");
 		String name = keyboard.nextLine();
@@ -197,6 +258,9 @@ public class Members {
 		}
 	}
 	
+	/**
+	 * Method to remove a member from a member list.
+	 */
 	public void removeMember() {
 		System.out.println("Enter ID of member to be removed: ");
 		String id = keyboard.nextLine();
@@ -215,6 +279,9 @@ public class Members {
 		}
 	}
 	
+	/**
+	 * Method to display the available JSON files in the project directory.
+	 */
 	public void showAvailableFiles() {
 		String[] pathnames;
 		File file = new File(".");
@@ -232,11 +299,17 @@ public class Members {
 		}
 	}
 	
+	/**
+	 * Method which displays the application header when it is started.
+	 */
 	public void displayApplicationHeader() {
 		System.out.println("Attendance Handler System" + "\n"  + "\n" + "---------------------" + "\n"
 		+ "\n" + "Welcome to AHS" + "\n");
 	}
 	
+	/**
+	 * Method which displays the option menu for the user to choose from.
+	 */
 	public void displayOptionMenu() {
 		System.out.println("\n" + "Pick an option:" + "\n" + "(1) Load member list from file" + "\n"
 	    + "(2) Set/take attendance" + "\n" + "(3) Save attendance list to file" + "\n" 

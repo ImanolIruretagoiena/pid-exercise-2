@@ -11,8 +11,16 @@ import java.util.List;
 
 import org.junit.Test;
 
+/**
+ * Test class for Member organizer class.
+ * @author ImanolIruretagoiena
+ * @version 2020.04.29
+ */
 public class TestMembers {
 
+	/**
+	 * Test which shows unsuccessful attempt to load member data from a non existent file.
+	 */
 	@Test
 	public void testLoadMemberDataFromInvalidFile() {
 		Members members = new Members();
@@ -26,6 +34,9 @@ public class TestMembers {
 		assertEquals(true, success);
 	}
 	
+	/**
+	 * Test which shows successful addition of multiple members to a new member list.
+	 */
 	@Test
 	public void testAddMembersToNewMemberList() {
 		String data = "Johan" + "\n" + "o4g8" + "\n" + "Peter" + "\n" + "r6y2";
@@ -38,6 +49,10 @@ public class TestMembers {
 		System.setIn(System.in);
 	}
 	
+	/**
+	 * Test which shows how when adding members to a list, if a repeated ID is given only the first
+	 * member with that ID will be added.
+	 */
 	@Test
 	public void testCheckRepeatedID() {
 		boolean success = false;

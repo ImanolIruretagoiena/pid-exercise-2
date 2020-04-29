@@ -7,8 +7,16 @@ import java.io.PrintStream;
 
 import org.junit.Test;
 
+/**
+ * Test class for Member class.
+ * @author ImanolIruretagoiena
+ * @version 2020.04.29
+ */
 public class TestMember {
 
+	/**
+	 * Test method which shows successful setting of a new name for a member.
+	 */
 	@Test
 	public void testSetName() {
 		Member member = new Member("Johan", "g9t6");
@@ -16,6 +24,9 @@ public class TestMember {
 		assertEquals("Mike", member.getName());
 	}
 	
+	/**
+	 * Test which shows successful setting of a new ID for a member.
+	 */
 	@Test
 	public void testSetID() {
 		Member member = new Member("Michael", "s4l8");
@@ -23,6 +34,9 @@ public class TestMember {
 		assertEquals("a4k0", member.getId());
 	}
 	
+	/**
+	 * Test which shows successful printout of member details.
+	 */
 	@Test
 	public void testPrintDetails() {
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
