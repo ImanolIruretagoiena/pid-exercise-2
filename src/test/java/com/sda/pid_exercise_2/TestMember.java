@@ -43,7 +43,7 @@ public class TestMember {
 		System.setOut(new PrintStream(output));
 		Member member = new Member("Michael", "s4l8");
 		member.printDetails();
-		String expectedOutput = "Name: Michael, id: s4l8" + "\n";
+		String expectedOutput = "Name: Michael, id: s4l8" + "\r\n";
 		assertEquals(expectedOutput, output.toString());
 		System.setOut(System.out);
 	}
